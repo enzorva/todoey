@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:todoey/models/task.dart';
+import 'package:todoey/models/task_data.dart';
+import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
   @override
@@ -35,13 +38,18 @@ class AddTaskScreen extends StatelessWidget {
               },
             ),
             ElevatedButton(
+              style: const ButtonStyle(
+                  backgroundColor:
+                      MaterialStatePropertyAll(Colors.lightBlueAccent)),
               onPressed: () {
-                print(newTaskTitle);
+                Provider.of<TaskData>(context, listen: false)
+                    .addTask(newTaskTitle);
+                Navigator.pop(context);
               },
               child: const Text(
                 'Add',
                 style: TextStyle(
-                  color: Colors.lightBlueAccent,
+                  color: Colors.white,
                 ),
               ),
             )
