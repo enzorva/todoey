@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:todoey/models/task.dart';
 import 'package:todoey/models/task_data.dart';
 import 'package:provider/provider.dart';
 
 class AddTaskScreen extends StatelessWidget {
+  const AddTaskScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     late String newTaskTitle;
@@ -39,8 +40,9 @@ class AddTaskScreen extends StatelessWidget {
             ),
             ElevatedButton(
               style: const ButtonStyle(
-                  backgroundColor:
-                      MaterialStatePropertyAll(Colors.lightBlueAccent)),
+                backgroundColor:
+                    MaterialStatePropertyAll(Colors.lightBlueAccent),
+              ),
               onPressed: () {
                 Provider.of<TaskData>(context, listen: false)
                     .addTask(newTaskTitle);
